@@ -1,0 +1,11 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "API para aplicacion bancaria",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Fabrizio Meschini",
+  "license": "ISC"
+}
