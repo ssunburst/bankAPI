@@ -24,6 +24,13 @@ accounts.push(new Account(i++, clients[3], CAJA_AHORRO, 15));
 accounts.push(new Account(i++, clients[6], CAJA_AHORRO, 4000));
 
 const transfers = [];
+i = 1;
+transfers.push(new Transfer(clients[3], accounts[2], accounts[5], 100));
+transfers.push(new Transfer(clients[3], accounts[2], accounts[5], 100));
+transfers.push(new Transfer(clients[3], accounts[2], accounts[5], 100));
+transfers.push(new Transfer(clients[3], accounts[2], accounts[5], 100));
+transfers.push(new Transfer(clients[3], accounts[2], accounts[5], 100));
+transfers.push(new Transfer(clients[3], accounts[2], accounts[5], 100));
 
 module.exports = {
     clients,

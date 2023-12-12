@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const accountController = require('../controllers/AccountController');
 
-router.get('/accounts/:clientId', accountController.findAccountsByClient);
-router.get('/accounts/:clientId/:accountNumber', accountController.findAccount);
+router.get('/', accountController.getAccounts);
+router.get('/:clientId', accountController.findAccountsByClient);
+router.get('/:clientId/:accountNumber', accountController.findAccount);
 
 module.exports = router;

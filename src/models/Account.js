@@ -1,5 +1,5 @@
-const CUENTA_CORRIENTE = 0;
-const CAJA_AHORRO = 1;
+const CUENTA_CORRIENTE = "Cuenta corriente";
+const CAJA_AHORRO = "Caja de ahorro";
 
 class Account {
     constructor(id, client, type, balance) {

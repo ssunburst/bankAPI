@@ -1,6 +1,10 @@
 const { response } = require('express');
 const {accounts} = require('../../data/db');
 
+function getAccounts(req, res) {
+    return res.json(accounts);
+}
+
 function findAccountsByClient(req, res) {
     const clientId = req.params.clientId;
     const clientAccounts = accounts.filter(account => account.client.id == clientId);
@@ -15,6 +19,7 @@ function findAccount(req, res) {
 }
 
 module.exports = {
+    getAccounts,
     findAccountsByClient,
     findAccount
 }

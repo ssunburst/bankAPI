@@ -4,7 +4,7 @@ const { Transfer } = require('../models/Transfer');
 
 function performTransfer(req, res) {
     const postData = req.body;
-    const clientId = postData.clientId;
+    const clientId = postData.client;
     const sourceAccountNumber = postData.source;
     const destinationAccountNumber = postData.dest;
     const transferAmount = postData.amount;
@@ -38,9 +38,19 @@ function performTransfer(req, res) {
 }
 
 function getTransfersByClient(req, res) {
+    const {amount} = req.query;
     const clientId = req.params.clientId;
-    const clientTransfers = transfers.filter(transfer => transfer.client.id == clientId);
-    return res.json(clientTransfers);
+    const clientTransfers = transfers.filter(transfer => transfer.client.id == clientId).reverse();
+    const mappedTransfers = clientTransfers.map(transfer => {
+        const {client, ...rest} = transfer;
+        rest.timestamp = rest.timestamp.toLocaleString();
+        return rest;
+    })
+    if (amount) {
+        const slicedTransfers = mappedTransfers.slice(0, +amount);
+        return res.json(slicedTransfers);
+    }
+    return res.json(mappedTransfers);
 }
 
 module.exports = {

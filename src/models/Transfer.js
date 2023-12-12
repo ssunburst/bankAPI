@@ -1,3 +1,5 @@
+let i = 1;
+
 class Transfer {
     constructor(client, sourceAccount, destinationAccount, amount) {
         if (sourceAccount.balance < amount)
@@ -5,10 +7,15 @@ class Transfer {
         if (sourceAccount.client === destinationAccount.client) {
             if (client != sourceAccount.client)
                 throw new Error("Client does not own both accounts given.");
+            if (sourceAccount == destinationAccount) {
+                throw new Error("Cannot transfer to the same account");
+            }
+            this.id = i++;
             this.client = client;
-            this.sourceAcount = sourceAccount;
+            this.sourceAccount = sourceAccount;
             this.destinationAccount = destinationAccount;
             this.amount = amount;
+            this.timestamp = new Date();
             sourceAccount.balance -= +amount;
             destinationAccount.balance += +amount;
         }
